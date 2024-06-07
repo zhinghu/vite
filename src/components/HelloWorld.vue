@@ -3,6 +3,12 @@
     <button @click="toggleSidebar" class="toggle-btn">Toggle Sidebar</button>
     <div :class="['sidebar', { 'sidebar-closed': !showSidebar }]">
       <!-- Sidebar content here -->
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#">Option 1</a></li>
+        <li><a href="#">Option 2</a></li>
+        <li><a href="#">Option 3</a></li>
+      </ul>
     </div>
     <div class="main-content" :class="{ 'main-content-closed': !showSidebar }">
       <!-- Main content here -->
