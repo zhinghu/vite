@@ -1,10 +1,10 @@
 <template>
   <div>
     <button @click="toggleSidebar" class="toggle-btn">Toggle Sidebar</button>
-    <div v-if="showSidebar" class="sidebar">
+    <div :class="['sidebar', { 'sidebar-closed': !showSidebar }]">
       <!-- Sidebar content here -->
     </div>
-    <div class="main-content">
+    <div class="main-content" :class="{ 'main-content-closed': !showSidebar }">
       <!-- Main content here -->
       <h1>{{ msg }}</h1>
       <div class="card">
@@ -32,6 +32,40 @@
   </div>
 </template>
 
+<style scoped>
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: width 0.5s;
+}
+
+.main-content {
+  margin-left: 200px;
+  transition: margin-left 0.5s;
+}
+
+.main-content-closed {
+  margin-left: 0;
+}
+
+.sidebar-closed {
+  width: 0;
+}
+</style>
+
 <script setup>
 import { ref } from 'vue'
 
@@ -46,37 +80,3 @@ function toggleSidebar() {
   showSidebar.value = !showSidebar.value
 }
 </script>
-
-<style scoped>
-/* 添加样式控制按钮位置 */
-.toggle-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 999;
-}
-.sidebar {
-  width: 200px;
-  height: 100%;
-  background-color: #f2f2f2;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-  transition: 0.5s;
-}
-
-.main-content {
-  margin-left: 200px;
-  transition: margin-left 0.5s;
-}
-
-.sidebar-closed .sidebar {
-  width: 0;
-}
-
-.sidebar-closed .main-content {
-  margin-left: 0;
-}
-</style>
