@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="toggleSidebar" class="toggle-btn">Toggle Sidebar</button>
+    <button @click="toggleSidebar" class="toggle-btn">≡</button>
     <div :class="['sidebar', { 'sidebar-closed': !showSidebar }]">
       <!-- Sidebar content here -->
       <ul>
