@@ -92,7 +92,7 @@ defineProps({
 })
 
 const count = ref(0)
-const showSidebar = ref(true)
+const showSidebar = ref(false) // 侧边栏默认关闭
 
 function toggleSidebar() {
   showSidebar.value = !showSidebar.value
