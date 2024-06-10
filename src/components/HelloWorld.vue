@@ -1,15 +1,17 @@
 <template>
   <div>
     <button @click="toggleSidebar" class="toggle-btn">≡</button>
-    <div :class="['sidebar', { 'sidebar-closed': !showSidebar }]">
-      <!-- Sidebar content here -->
-      <ul>
-        <li><a href="#"></a></li>
-        <li><a href="#">Option 1</a></li>
-        <li><a href="#">Option 2</a></li>
-        <li><a href="#">Option 3</a></li>
-      </ul>
-    </div>
+    <transition name="sidebar">
+      <div :class="['sidebar', { 'sidebar-closed': !showSidebar }]">
+        <!-- Sidebar content here -->
+        <ul>
+          <li><a href="#"></a></li>
+          <li><a href="#">Option 1</a></li>
+          <li><a href="#">Option 2</a></li>
+          <li><a href="#">Option 3</a></li>
+        </ul>
+      </div>
+    </transition>
     <div class="main-content" :class="{ 'main-content-closed': !showSidebar }">
       <!-- Main content here -->
       <h1>{{ msg }}</h1>
@@ -55,7 +57,11 @@
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
-  transition: width 0.5s;
+  transition: width 0.5s; /* Add transition property for smooth sidebar animation */
+}
+
+.sidebar-closed {
+  width: 0;
 }
 
 .main-content {
@@ -67,7 +73,13 @@
   margin-left: 0;
 }
 
-.sidebar-closed {
+.sidebar-enter-active,
+.sidebar-leave-active {
+  transition: width 0.5s;
+}
+
+.sidebar-enter-from,
+.sidebar-leave-to {
   width: 0;
 }
 </style>
