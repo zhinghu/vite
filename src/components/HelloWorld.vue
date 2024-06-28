@@ -3,17 +3,15 @@
     <button @click="toggleSidebar" class="toggle-btn">≡</button>
     <transition name="sidebar">
       <div :class="['sidebar', { 'sidebar-closed': !showSidebar }]">
-        <!-- Sidebar content here -->
         <ul>
-          <li><a href="#"></a></li>
-          <li><a href="#">Option 1</a></li>
-          <li><a href="#">Option 2</a></li>
-          <li><a href="#">Option 3</a></li>
+          <li><a href="#">首页</a></li>
+          <li><a href="#">分类</a></li>
+          <li><a href="#">标签</a></li>
+          <li><a href="#">关于</a></li>
         </ul>
       </div>
     </transition>
     <div class="main-content" :class="{ 'main-content-closed': !showSidebar }">
-      <!-- Main content here -->
       <h1>{{ msg }}</h1>
       <div class="card">
         <button type="button" @click="count++">count is {{ count }}</button>
