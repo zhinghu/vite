@@ -57,16 +57,18 @@
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
-  transition: width 0.5s; /* Add transition property for smooth sidebar animation */
+  transition: width 0.5s ease, opacity 0.5s ease; /* Add transition property for smooth sidebar animation */
+  opacity: 1;
 }
 
 .sidebar-closed {
   width: 0;
+  opacity: 0; /* Add opacity for fade-out effect */
 }
 
 .main-content {
   margin-left: 200px;
-  transition: margin-left 0.5s;
+  transition: margin-left 0.5s ease;
 }
 
 .main-content-closed {
@@ -75,12 +77,13 @@
 
 .sidebar-enter-active,
 .sidebar-leave-active {
-  transition: width 0.5s;
+  transition: width 0.5s ease, opacity 0.5s ease;
 }
 
 .sidebar-enter-from,
 .sidebar-leave-to {
   width: 0;
+  opacity: 0;
 }
 </style>
 
